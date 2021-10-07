@@ -1,0 +1,65 @@
+﻿@model PizzaApplication.Models.UserDTO
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<h3>  @ViewBag.regalert</h3>
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                User Registration
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Register", "User", FormMethod.Post))
+                {
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Id)
+                        <br />
+                        @Html.EditorFor(m => m.Id)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        <br />
+                        @Html.EditorFor(m => m.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        <br />
+                        @Html.EditorFor(m => m.Password)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address)
+                        <br />
+                        @Html.EditorFor(m => m.Address)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Phone)
+                        <br />
+                        @Html.EditorFor(m => m.Phone)
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Register" class="btn btn-primary" />
+                    </div>
+                }
+            </div>
+            <div class="card-footer">
+                <div>
+                    <a asp-action="Login">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Login">Login</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
